@@ -1,4 +1,4 @@
-FROM rabbitmq:management-alpine
+FROM rabbitmq:3.6-management-alpine
 
 RUN  apk add  --update ca-certificates wget
 
