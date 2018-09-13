@@ -1,8 +1,14 @@
-FROM rabbitmq:3.6-management-alpine
+FROM rabbitmq:3.7-management-alpine
+
+ENV EXCHANGE_VERSION="20171201-3.7.x"
 
 RUN  apk add  --update ca-certificates wget
 
-RUN wget https://bintray.com/rabbitmq/community-plugins/download_file?file_path=rabbitmq_delayed_message_exchange-0.0.1.ez \
-        -O /plugins/rabbitmq_delayed_message_exchange.ez
+RUN cd /plugins \
+        && wget https://dl.bintray.com/rabbitmq/community-plugins/3.7.x/rabbitmq_delayed_message_exchange/rabbitmq_delayed_message_exchange-${EXCHANGE_VERSION}.zip \
+        -O rabbitmq_delayed_message_exchange.zip \
+        && unzip rabbitmq_delayed_message_exchange.zip \
+        && mv rabbitmq_delayed_message_exchange-${EXCHANGE_VERSION}.ez /plugins/rabbitmq_delayed_message_exchange.ez \
+        && rm rabbitmq_delayed_message_exchange.zip
 
 RUN rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange
