@@ -1,6 +1,6 @@
-FROM rabbitmq:3.13-management-alpine
+FROM rabbitmq:4-management-alpine
 
-ENV EXCHANGE_VERSION="3.13.0"
+ENV EXCHANGE_VERSION="4.0.2"
 
 RUN  apk add  --update ca-certificates wget
 
