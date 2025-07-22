@@ -1,4 +1,4 @@
-FROM rabbitmq:4-management-alpine
+FROM rabbitmq:4.0-management-alpine
 
 ENV EXCHANGE_VERSION="4.0.7"
 
